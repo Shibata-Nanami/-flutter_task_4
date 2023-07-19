@@ -1,6 +1,7 @@
 /// メモ一覧画面用のWidget
 import 'package:flutter/material.dart';
 import 'package:flutter_task_3/Model.dart';
+import 'package:flutter_task_3/screen3.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -77,6 +78,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
+        actions: [
+          TextButton(
+            onPressed: () {
+              context.goNamed(Screen3.routeName);
+            },
+            child: const Icon(Icons.cruelty_free),
+          ),
+        ],
       ),
       body: SafeArea(
         child: SizedBox(

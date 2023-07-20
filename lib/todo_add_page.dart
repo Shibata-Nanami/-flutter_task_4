@@ -1,6 +1,7 @@
 /// メモ追加画面用のWidget
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_task_3/memo.dart';
+import 'package:provider/provider.dart';
 
 class TodoAddPage extends StatefulWidget {
   const TodoAddPage({super.key});
@@ -11,16 +12,6 @@ class TodoAddPage extends StatefulWidget {
 
 class _TodoAddPageState extends State<TodoAddPage> {
   final TextEditingController _controller = TextEditingController();
-
-  // int _counter = 3;
-
-  // //　追加ボタンが押されたときに実行する関数
-  // void _addItem(String inputtext) {
-  //   setState(() {
-  //     _counter++;
-  //     Model.add({"id": _counter, "text": inputtext});
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -76,12 +67,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 ),
                 onPressed: () {
                   print(_controller.text);
-                  context.go('/', extra: {
-                    'name': _controller.text,
-                  });
-                  // _controller.clear();
-                  // context.go('/');
-                  //pop:前のページに遷移するメソッド
+                  context.read<Memo>().addItem(context, _controller.text);
                 },
                 child: const Text('追加', style: TextStyle(color: Colors.white)),
               ),
